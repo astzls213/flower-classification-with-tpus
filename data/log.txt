@@ -1,0 +1,46 @@
+5.4 updated:
+Current best model: efficient net b7
+Acc 98%, Val_acc 95.8%
+Optimizer: Adam
+lr: 2.5e-4, with scheduler sigmoid-like
+class_weight: None
+
+5.2 updated:
+(1)Current best model: efficient net b7
+Acc 98%, Val_acc 95.42%
+Optimizer: Adam
+lr: 1e-5, with scheduler
+class_weight: None
+
+(2)Previous best model: res
+Acc 96%, Val_acc 92%
+Note: 添加了oxford flower dataset，约2700张（数据清洗后，原本有7000多）
+
+
+5.1 updated:
+(1)Current best model: res
+Acc 96%, Val_acc 90%
+Optimizer: Adam
+lr: approximately 9.8e-5
+class_weight: None
+Layers: Res101V2->GAP->Dropout(0.25)->Dense(104)
+Freezing layers: Res(conv1_block1) -> Res(conv4_block22)
+
+
+4.29 updated:
+(1)Current best model: vgg
+Acc 83%, Val_acc 80%
+Optimizer: Adam
+lr: 1e-3
+class_weight: cw_ver1
+Layers: VGG16->GAP->Dropout(0.25)->Dense(104)
+Freezing layers: VGG16(block1) -> VGG16(block3)
+
+
+4.28 updated:
+(1)Current best model: vgg
+Acc 90%, Val_acc 70% (overfitting)
+Optimizer: RMSprop
+lr: 2e-5
+Layers: VGG16->GAP->Dropout(0.4)->Dense(512)->Dense(104)
+Freezing layers: VGG16
