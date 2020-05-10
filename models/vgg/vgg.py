@@ -325,18 +325,7 @@ def VGG_via_FC():
             tf.keras.layers.Dropout(0.3),
             tf.keras.layers.Dense(104, activation='softmax')
         ])
-    '''
-    METRICS = [
-      keras.metrics.TruePositives(name='tp'),
-      keras.metrics.FalsePositives(name='fp'),
-      keras.metrics.TrueNegatives(name='tn'),
-      keras.metrics.FalseNegatives(name='fn'), 
-      keras.metrics.BinaryAccuracy(name='accuracy'),
-      keras.metrics.Precision(name='precision'),
-      keras.metrics.Recall(name='recall'),
-      keras.metrics.AUC(name='auc'),
-    ]   
-    '''  
+
     model.compile(
         optimizer=tf.keras.optimizers.Adam(lr=LEARNING_RATE),
         loss = 'sparse_categorical_crossentropy',
