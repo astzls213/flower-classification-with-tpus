@@ -260,7 +260,7 @@ def lrfn(epoch):
         return opt_lr
     else:
         return lr_min
-    return lr
+
 
 callbacks_list = [
     tf.keras.callbacks.EarlyStopping(
@@ -275,7 +275,7 @@ callbacks_list = [
 
 
 #开 始 训 练 ?
-if 1:
+if tpu:
     nums_image = count_data_items(TRAINING_FILENAMES)
     STEPS_PER_EPOCH = nums_image // BATCH_SIZE
     print('Total {} images will be training..'.format(nums_image))
