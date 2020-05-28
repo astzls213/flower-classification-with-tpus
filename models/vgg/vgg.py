@@ -348,7 +348,7 @@ def vgg_api():
             else:
                 layer.trainable = False
         
-        x = tf.keras.layers.Input(shape=(512,512,3))  
+        x = tf.keras.layers.Input(shape=(512,512,3))
         vgg = conv_base(x)
         dp2 = tf.keras.layers.Dropout(0.5)(vgg)
         gap = tf.keras.layers.GlobalAveragePooling2D()(dp2)
