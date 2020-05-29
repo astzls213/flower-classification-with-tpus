@@ -1,7 +1,10 @@
 # Byte-compiled / optimized / DLL files
 
-# pptx,docx,key,pages
+# Custom ignore ext.
 *.key
+*.mp4
+*.tfrec
+*.h5
 
 __pycache__/
 *.py[cod]
