@@ -41,16 +41,10 @@ CHANNELS = 3
 try: #Running in Kaggle kernel
     from kaggle_datasets import KaggleDatasets
     BASE = KaggleDatasets().get_gcs_path('flower-classification-with-tpus')
-except ModuleNotFoundError: # Running at my mac
-    BASE = "/Users/astzls/Downloads/flower"
+except ModuleNotFoundError: # 本地训练
+    BASE = "替换成自己的路径"
 
-PATH_SELECT = { # 根据图像大小选择路径
-    192: BASE + '/tfrecords-jpeg-192x192',
-    224: BASE + '/tfrecords-jpeg-224x224',
-    331: BASE + '/tfrecords-jpeg-331x331',
-    512: BASE + '/tfrecords-jpeg-512x512'
-}
-IMAGE_PATH = PATH_SELECT[IMAGE_SIZE[0]]
+IMAGE_PATH = BASE + '/tfrecords-jpeg-512x512'
 
 #此处利用tf.io的库函数
 #读出文件集方式很多种，也可以用os+re库进行
@@ -66,20 +60,14 @@ try: #Running in Kaggle kernel
 except ModuleNotFoundError: # Running at my mac
     ext = None
 
-ext_path_select = { # 根据图像大小选择路径
-    192: ext + '/tfrecords-jpeg-192x192',
-    224: ext + '/tfrecords-jpeg-224x224',
-    331: ext + '/tfrecords-jpeg-331x331',
-    512: ext + '/tfrecords-jpeg-512x512'
-}
-ext_path = ext_path_select[IMAGE_SIZE[0]]
+ext_path = ext + '/tfrecords-jpeg-512x512'
 
 TRAINING_FILENAMES += tf.io.gfile.glob(ext_path + '/*.tfrec')
 
 
 # 统计image数量
 def count_data_items(filenames):
-    n = [int(re.compile(r"-([0-9]*)\.").search(filename).group(1)) for filename in filenames]
+    n = [int(re.compile(r"-([0-9]+)\.").search(filename).group(1)) for filename in filenames]
     return np.sum(n)
 
 #下面是核心函数构造，自顶向下
@@ -140,7 +128,7 @@ def data_augmentation(image, label):
     #此方法利用了现实世界的平移不变形和空间不变形
 
     #这里我用了随机上下左右翻转，应该够用了吧。。
-    image = tf.image.random_flip_left_right(image) 
+    image = tf.image.random_flip_left_right(image)
     image = tf.image.random_flip_up_down(image)
     image = tf.image.random_saturation(image, lower=0, upper=3)
 
