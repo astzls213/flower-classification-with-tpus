@@ -1,18 +1,38 @@
 # Flowers classification with tpus
 
+## 数据集来源
+
+**Kaggle公开数据集：https://www.kaggle.com/c/flower-classification-with-tpus/data**
+
+## ![数据集下载示意图](./data/数据集下载示意图.jpeg)
+
 ## 项目架构
 
-**Analyse文件夹：包含对数据集的分析，以及用不同的网络架构对性能的影响**
+#### **flower-classification-with-tpus目录下：**
 
-**data文件夹：包含网络架构文件，日志文件，以及class_weight参数**
+**data文件夹：包含网络架构文件，日志文件，以及class_weight参数，对数据集的分析，以及用不同的网络架构对性能的影响**
 
-**deprecate文件夹：已经弃用的py文件，多用于测试**
+**code文件夹：包含所有源代码**
+
+**report文件夹：课程设计报告所在地**
+
+**demo文件夹：演示文稿ppt所在地**
+
+#### **code目录下：**
 
 **hyper_opt文件夹：超参数优化过程及结果**
 
 **models文件夹：包含每个架构整个流程的code,performance and output files**
 
 **utilities文件夹：一些对超参数优化有帮助的可视化小脚本**
+
+#### **data目录下：**
+
+**analysis文件夹：分析数据，都是图片**
+
+**architecture文件夹：各个预训练模型的架构文件**
+
+**class_distrib文件夹：训练数据集的类别数量分布情况，json文件**
 
 ## 开发过程
 
